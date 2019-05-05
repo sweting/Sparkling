@@ -77,7 +77,7 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 
 	<div id="content" class="site-content">
 
-		<div class="top-section">
+		<div class="top-section container">
 			<?php sparkling_featured_slider(); ?>
 			<?php sparkling_call_for_action(); ?>
 		</div>

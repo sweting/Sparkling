@@ -1,6 +1,6 @@
 /*
 Theme Name: Sparkling
-Theme URI: http://colorlib.com/wp/themes/sparkling
+Theme URI: https://github.com/sweting/Sparkling
 Author: Colorlib
 Author URI: http://colorlib.com/
 Description: Sparkling is a clean minimal and responsive WordPress theme well suited for travel, health, business, finance, portfolio, design, art, photography, personal, ecommerce and any other creative websites and blogs. Developed using Bootstrap 3 that makes it mobile and tablets friendly. Theme comes with full-screen slider, social icon integration, author bio, popular posts widget and improved category widget. Sparkling incorporates latest web standards such as HTML5 and CSS3 and is SEO friendly thanks to its clean structure and codebase. It has dozens of Theme Options based on WordPress Customizer to change theme layout, colors, fonts, slider settings and much more. Theme is also translation and multilingual ready, compatible with WPML and is available in Spanish, French, Dutch, Polish, Russian, German, Brazilian Portuguese, Portuguese (Portugal), Persian (Iranian language), Romanian, Turkish, Bulgarian, Japanese, Lithuanian, Czech, Ukrainian, Traditional Chinese, Simplified Chinese, Indonesian, Estonian, Spanish (Argentina), Hungarian and Italian. Sparkling is a free WordPress theme with premium functionality and design. Theme is ecommerce ready thanks to its WooCommerce integration. Now theme is optimized to work with bbPress, Contact Form 7, Jetpack, WooCommerce and other popular free and premium plugins. Lately we introduced a sticky/fixed navigation that you can enable or disable via WordPress Customizer.
@@ -80,7 +80,7 @@ pre {
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    color: #DA4453;
+    color:#039;
     font-weight: 700;
     font-family: 'Roboto Slab', serif;
 }
@@ -118,6 +118,7 @@ h6,
 img {
     height: auto; /* Make sure images are scaled correctly. */
     max-width: 100%; /* Adhere to container width. */
+    width: 100%;
 }
 
 button,
@@ -292,6 +293,11 @@ textarea {
 /* =Content
 ----------------------------------------------- */
 
+.container {
+    padding-left:   0;
+    padding-right:  0;
+}
+
 .sticky {
 }
 
@@ -324,6 +330,22 @@ textarea {
 .main-content-area {
     margin-top: 40px;
     margin-bottom: 40px;
+}
+
+@media (max-width: 922px) {
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .main-content-inner {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .main-content-area {
+        margin-top: 0;
+    }
 }
 
 /* =Post styling
@@ -676,7 +698,7 @@ object {
 }
 
 #secondary .widget a {
-    color: #C1C0C0;
+    color: rgb(77, 77, 77);
 }
 
 #secondary .widget a:hover {
@@ -1009,6 +1031,12 @@ button:hover, .button:hover {
     font-size: 20px;
     margin: 10px 0;
     font-family: 'Roboto Slab', serif;
+}
+
+@media (max-width: 350px) {
+    .navbar > .container .navbar-brand {
+        font-size: 15px;
+    }
 }
 
 .navbar-default .navbar-nav > .open > a,
@@ -2456,4 +2484,10 @@ button[type=submit],
     left: 50%;
     transform: translateX(-50%);
     width: auto;
+}
+@media (min-width: 1200px)
+{
+    .flexslider ul li img {
+        min-height: 550px;
+    }
 }

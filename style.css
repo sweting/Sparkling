@@ -2488,6 +2488,6 @@ button[type=submit],
 @media (min-width: 1200px)
 {
     .flexslider ul li img {
-        min-height: 550px;
+        min-height: 360px;
     }
 }

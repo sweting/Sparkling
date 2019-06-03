@@ -213,7 +213,8 @@ if ( ! function_exists( 'sparkling_featured_slider' ) ) :
 						if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'photon' ) ) {
 							$feat_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
 							$args           = array(
-								'resize' => '1920,550',
+								//'resize' => '1920,550',
+								'resize' => '770,250',
 							);
 							$photon_url     = jetpack_photon_url( $feat_image_url[0], $args );
 							echo '<img src="' . $photon_url . '">';
@@ -286,7 +287,7 @@ if ( ! function_exists( 'get_sparkling_theme_options' ) ) {
 			echo '.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {color: ' . of_get_option( 'element_color_hover' ) . ';}';
 		}
 		if ( of_get_option( 'cfa_bg_color' ) ) {
-			echo '.cfa { background-color: ' . of_get_option( 'cfa_bg_color' ) . '; } .cfa-button:hover a {color: ' . of_get_option( 'cfa_bg_color' ) . ';}';
+			echo '.cfa { background-color: ' . of_get_option( 'cfa_bg_color' ) . '; } .cfa-button:hover a {color: ' . of_get_option( 'cfa_bg_color' ) . ';} .top-section { background-color: ' . of_get_option( 'cfa_bg_color' ) . '; }';
 		}
 		if ( of_get_option( 'cfa_color' ) ) {
 			echo '.cfa-text { color: ' . of_get_option( 'cfa_color' ) . ';}';

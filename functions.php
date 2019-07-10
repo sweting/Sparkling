@@ -597,3 +597,20 @@ new Epsilon_Framework( $epsilon_framework_settings );
 
 //Include Welcome Screen
 require get_template_directory() . '/inc/welcome-screen/welcome-page-setup.php';
+
+// Add Function to limit word in the_content
+function get_the_content_limit($limit){
+	$content = explode(' ', get_the_content(), $limit);
+  
+	if (count($content)>=$limit){
+		 array_pop($content);
+		 $content = implode(" ",$content).'...';
+	} else {
+	  $content = implode(" ",$content);
+	}
+	  
+	$content = preg_replace('/\[.+\]/','', $content);
+	$content = apply_filters('the_content', $content); 
+	$content = str_replace(']]>', ']]&gt;', $content);
+	return $content;
+}

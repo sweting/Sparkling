@@ -369,6 +369,16 @@ footer.entry-meta {
     padding-bottom: 0;
 }
 
+.archive-title {
+    background: #fff;
+    padding: 10px;
+}
+
+.archive-title h1 {
+    margin: 0;
+    padding: 0;
+}
+
 .entry-meta {
     font-size: 14px;
     margin-right: 3px;
@@ -449,6 +459,12 @@ hr.section-divider {
     background-color: #fff;
     border: 1px solid #dadada;
     border-top: none;
+}
+
+.comments-area {
+    margin-top: 20px;
+    padding: 15px 50px;
+    background-color: #fff;
 }
 
 body.archive .post-inner-content,
@@ -1432,7 +1448,8 @@ p.logged-in-as {
 }
 
 @media (max-width: 767px) {
-    .post-inner-content {
+    .post-inner-content, 
+    .comments-area {
         padding: 20px 25px;
     }
 
@@ -1645,6 +1662,8 @@ p.logged-in-as {
     list-style: none;
 }
 
+
+
 .footer-widget {
     overflow: hidden;
 }
@@ -1730,6 +1749,10 @@ p.logged-in-as {
 .site-info .nav a {
     padding: 10px 15px;
     text-transform: uppercase;
+}
+
+.footer-nav.nav a {
+    text-transform: none !important;
 }
 
 @media (max-width: 768px) {
@@ -2431,6 +2454,10 @@ p.logged-in-as {
         padding: 10px 16px;
         margin-top: 10px;
     }
+
+    .mobile-no-padding {
+        padding: 0;
+    }
 }
 
 /* =Elements when no javaScript is present
@@ -2490,4 +2517,14 @@ button[type=submit],
     .flexslider ul li img {
         min-height: 360px;
     }
+}
+
+@media (max-width: 450px) {
+    .thumbnail,
+    .wp-block-image figure  {
+        display: block!;
+        float: none!;
+        margin: auto!;
+    }
+
 }

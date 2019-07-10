@@ -16,7 +16,7 @@
 			if ( have_posts() ) :
 			?>
 
-				<header class="page-header">
+				<header class="page-header archive-title">
 					<?php
 					 the_archive_title( '<h1 class="page-title">', '</h1>' );
 					 the_archive_description( '<div class="archive-description">', '</div>' );
@@ -39,8 +39,8 @@
 
 				the_posts_pagination(
 					array(
-						'prev_text' => '<i class="fa fa-chevron-left"></i> ' . __( 'Newer posts', 'sparkling' ),
-						'next_text' => __( 'Older posts', 'sparkling' ) . ' <i class="fa fa-chevron-right"></i>',
+						'prev_text' => '<i class="fa fa-chevron-left"></i> ' . __( 'Neuere', 'sparkling' ),
+						'next_text' => __( 'Ältere', 'sparkling' ) . ' <i class="fa fa-chevron-right"></i>',
 					)
 				);
 

@@ -53,7 +53,7 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 								<span class="icon-bar"></span>
 							</button>
 
-														<div id="logo">
+														<div id="logo" style="width: 80%;">
 															<?php if ( get_header_image() != '' ) { ?>
 																	<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php header_image(); ?>"  height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="<?php bloginfo( 'name' ); ?>"/></a>
 																		<?php if ( is_home() ) { ?>
@@ -82,7 +82,7 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 			if ( is_front_page() && of_get_option( 'sparkling_slider_checkbox' ) == 1 ) :
 			?>
 			<div class="row">
-				<div class="col-md-8">
+				<div class="col-md-8 mobile-no-padding">
 					<?php sparkling_featured_slider(); ?>
 				</div>
 				<div class="col-md-4">

@@ -31,7 +31,7 @@
 				<?php if ( 'post' == get_post_type() ) : ?>
 				<div class="entry-meta">
 					<?php sparkling_posted_on(); ?><?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
-				<span class="comments-link"><i class="fa fa-comments"></i><?php comments_popup_link( esc_html__( 'Leave a comment', 'sparkling' ), esc_html__( '1 Comment', 'sparkling' ), esc_html__( '% Comments', 'sparkling' ) ); ?></span>
+				<span class="comments-link"><i class="fa fa-comments"></i><?php comments_popup_link( esc_html__( 'Kommentar schreiben', 'sparkling' ), esc_html__( '1 Kommentar', 'sparkling' ), esc_html__( '% Kommentare', 'sparkling' ) ); ?></span>
 				<?php endif; ?>
 
 				<?php if ( get_edit_post_link() ) : ?>
@@ -39,7 +39,7 @@
 						edit_post_link(
 							sprintf(
 								/* translators: %s: Name of current post */
-								esc_html__( 'Edit %s', 'sparkling' ),
+								esc_html__( 'Bearbeiten %s', 'sparkling' ),
 								the_title( '<span class="screen-reader-text">"', '"</span>', false )
 							),
 							'<i class="fa fa-edit"></i><span class="edit-link">',
@@ -54,20 +54,20 @@
 
 			<?php if ( is_search() ) : // Only display Excerpts for Search ?>
 			<div class="entry-summary">
-				<?php the_excerpt(); ?>
-				<p><a class="btn btn-default read-more" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Read More', 'sparkling' ); ?></a></p>
+				<?php echo get_the_content_limit(55);//the_excerpt(); ?>
+				<p><a class="btn btn-default read-more" href="<?php the_permalink(); ?>"><?php esc_html_e( 'Mehr', 'sparkling' ); ?></a></p>
 			</div><!-- .entry-summary -->
 			<?php else : ?>
 			<div class="entry-content">
 
 				<?php
 				if ( get_theme_mod( 'sparkling_excerpts' ) == 1 ) :
-					the_excerpt();
+					echo get_the_content_limit(55);//the_excerpt();
 					?>
-					<p><a class="btn btn-default read-more" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php esc_html_e( 'Read More', 'sparkling' ); ?></a></p>
+					<p><a class="btn btn-default read-more" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php esc_html_e( 'Mehr', 'sparkling' ); ?></a></p>
 				<?php
 				else :
-					the_content( esc_html__( 'Read More', 'sparkling' ) );
+					the_content( esc_html__( 'Mehr', 'sparkling' ) );
 				endif;
 					?>
 

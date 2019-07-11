@@ -186,19 +186,40 @@ if ( ! function_exists( 'sparkling_featured_slider' ) ) :
 
 			$count    = of_get_option( 'sparkling_slide_number' );
 			$slidecat = of_get_option( 'sparkling_slide_categories' );
-
-			$query = new WP_Query(
-				array(
-					'cat'            => $slidecat,
-					'posts_per_page' => $count,
-					'meta_query'     => array(
-						array(
-							'key'     => '_thumbnail_id',
-							'compare' => 'EXISTS',
+			$query = null;
+			// Select the posts for the slider
+			if ( of_get_option( 'sparkling_slider_featured_checkbox', 1 ) == 0 )
+			{
+				$query = new WP_Query(
+					array(
+						'cat'            => $slidecat,
+						'posts_per_page' => $count,
+						'meta_query'     => array(
+							array(
+								'key'     => '_thumbnail_id',
+								'compare' => 'EXISTS',
+							),
 						),
-					),
-				)
-			);
+					)
+				);
+			} else 
+			{
+				$query = new WP_Query(
+					array(
+						'meta_key' => 'featured-post',
+        				'meta_value' => 1,
+						'posts_per_page' => $count,
+						'meta_query'     => array(
+							array(
+								'key'     => '_thumbnail_id',
+								'compare' => 'EXISTS',
+							),
+						),
+					)
+				);
+			}
+
+
 			if ( $query->have_posts() ) :
 				while ( $query->have_posts() ) :
 					$query->the_post();

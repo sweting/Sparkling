@@ -105,7 +105,7 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 								?>
 									<div style="padding-top: 5px; padding-bottom: 5px;">
 										<div class="newsImage" style="display: table-cell; width: 100px;">
-											<?php echo '<img style="max-height: 93px; width: auto;" src="' . $feat_image_url. '">'; ?>
+											<?php echo '<a href="'.get_permalink().'"><img style="max-height: 93px; width: auto;" src="' . $feat_image_url. '"></a>'; ?>
 										</div>
 										<div class="newsTitle" style="display: table-cell; vertical-align: middle; padding-left: 5px; padding-right: 20px;">
 											<?php echo '<a href="'.get_permalink().'">'.get_the_title().'</a>'; ?>

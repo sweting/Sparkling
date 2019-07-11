@@ -598,6 +598,38 @@ new Epsilon_Framework( $epsilon_framework_settings );
 //Include Welcome Screen
 require get_template_directory() . '/inc/welcome-screen/welcome-page-setup.php';
 
+
+// Register the Featured Post Checkbox in wordpress
+// The Posts they have this are displayed in the slider.
+function register_post_assets(){
+    add_meta_box('featured-post', __('Im Slider anzeigen'), 'add_featured_meta_box', 'post', 'advanced', 'high');
+}
+add_action('admin_init', 'register_post_assets', 1);
+
+function add_featured_meta_box($post){
+	$featured = get_post_meta($post->ID, 'featured-post', true);
+	//echo "Der Wert: ".$featured."<br>";
+	$checked = $featured == 1 ? 'checked="checked"' : ""; 
+    echo "<label for='featured-post'>".__('Im Slider anzeigen? ', 'foobar')."</label>";
+    echo "<input type='checkbox' name='featured-post' id='featured-post' value='1' ".$checked." />";
+}
+
+function save_featured_meta($post_id){
+	global $_REQUEST;
+	//var_dump($_REQUEST);
+	//echo "<br><br>";
+	
+    // Do validation here for post_type, nonces, autosave, etc...
+    if (isset($_REQUEST['featured-post'])) {
+		//echo "Wert: ".$_REQUEST['featured-post'];
+		update_post_meta($post_id, 'featured-post', esc_attr($_REQUEST['featured-post'])); 
+	} else {
+		update_post_meta($post_id, 'featured-post', 0); 
+	}
+        // I like using _ before my custom fields, so they are only editable within my form rather than the normal custom fields UI
+}
+add_action('save_post', 'save_featured_meta');
+
 // Add Function to limit word in the_content
 function get_the_content_limit($limit){
 	$content = explode(' ', get_the_content(), $limit);

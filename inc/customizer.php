@@ -122,6 +122,24 @@ function sparkling_customizer( $wp_customize ) {
 			)
 		)
 	);
+	// The Options for the featured posts
+	$wp_customize->add_setting(
+		'sparkling[sparkling_slider_featured_checkbox]', array(
+			'default'           => 0,
+			'type'              => 'option',
+			'sanitize_callback' => 'sparkling_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		new Epsilon_Control_Toggle(
+			$wp_customize, 'sparkling[sparkling_slider_featured_checkbox]', array(
+				'label'    => esc_html__( 'Check this to use posts marked as in Slider for Slider.', 'sparkling' ),
+				'section'  => 'sparkling_slider_options',
+				'priority' => 6,
+				'type'     => 'epsilon-toggle',
+			)
+		)
+	);
 
 	// Pull all the categories into an array
 	global $options_categories;

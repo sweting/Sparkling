@@ -740,6 +740,8 @@ object {
 @media (max-width: 767px) {
     #secondary {
         clear: both;
+        padding: 0;
+        margin-top: 60px;
     }
 }
 

@@ -25,6 +25,7 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="<?php echo of_get_option( 'nav_bg_color' ); ?>">
+<meta name="google-site-verification" content="1sk4lEM6YsdJtLVki_mdOMnMqlsPil97nQgwqs_xzr4" />
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
 <?php wp_head(); ?>
@@ -35,7 +36,7 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 <div id="page" class="hfeed site">
 
-	<header id="masthead" class="site-header" role="banner">
+	<header id="masthead" class="site-header container" role="banner">
 		<nav class="navbar navbar-default 
 		<?php
 		if ( of_get_option( 'sticky_header' ) ) {
@@ -77,57 +78,4 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 
 	<div id="content" class="site-content">
 
-		<div class="top-section container">
-			<?php
-			if ( is_front_page() && of_get_option( 'sparkling_slider_checkbox' ) == 1 ) :
-			?>
-			<div class="row">
-				<div class="col-md-8 mobile-no-padding">
-					<?php sparkling_featured_slider(); ?>
-				</div>
-				<div class="col-md-4">
-					<div style="margin 5px; background: #fff; height: 360px;">
-					<h2>Aktuelles</h2>
-					<?php
-						$query = new WP_Query(
-							array(
-								'posts_per_page' => 3
-							)
-						);
-						if ( $query->have_posts() ) :
-							while ( $query->have_posts() ) :
-								$query->the_post();
-							
-								$feat_image_url = get_template_directory_uri().'/assets/logo.jpg';
-								if ( ( function_exists( 'has_post_thumbnail' ) ) && ( has_post_thumbnail() ) ) {
-									$feat_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail' )[0];
-								}
-								?>
-									<div style="padding-top: 5px; padding-bottom: 5px;">
-										<div class="newsImage" style="display: table-cell; width: 100px;">
-											<?php echo '<a href="'.get_permalink().'"><img style="max-height: 93px; width: auto;" src="' . $feat_image_url. '"></a>'; ?>
-										</div>
-										<div class="newsTitle" style="display: table-cell; vertical-align: middle; padding-left: 5px; padding-right: 20px;">
-											<?php echo '<a href="'.get_permalink().'">'.get_the_title().'</a>'; ?>
-										</div>
-									</div>
-								<?php
-								//echo '<p><img style="width: 75px;" src="' . $feat_image_url[0] . '"><a href="'.get_permalink().'">'.get_the_title().'</a></p>';
-								
-							endwhile;
-						endif;
-						wp_reset_postdata();
-					?>
-					</div>
-				</div>
-			</div>
-			<?php
-			endif;
-			?>
-			<?php sparkling_call_for_action(); ?>
-		</div>
-
-		<div class="container main-content-area">
-			<?php $layout_class = get_layout_class(); ?>
-			<div class="row <?php echo $layout_class; ?>">
-				<div class="main-content-inner <?php echo sparkling_main_content_bootstrap_classes(); ?>">
+		

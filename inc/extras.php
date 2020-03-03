@@ -308,7 +308,7 @@ if ( ! function_exists( 'get_sparkling_theme_options' ) ) {
 			echo '.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {color: ' . of_get_option( 'element_color_hover' ) . ';}';
 		}
 		if ( of_get_option( 'cfa_bg_color' ) ) {
-			echo '.cfa { background-color: ' . of_get_option( 'cfa_bg_color' ) . '; } .cfa-button:hover a {color: ' . of_get_option( 'cfa_bg_color' ) . ';} .top-section { background-color: ' . of_get_option( 'cfa_bg_color' ) . '; }';
+			echo '.cfa { background-color: ' . of_get_option( 'cfa_bg_color' ) . '; } .cfa-button:hover a {color: ' . of_get_option( 'cfa_bg_color' ) . ';} ';
 		}
 		if ( of_get_option( 'cfa_color' ) ) {
 			echo '.cfa-text { color: ' . of_get_option( 'cfa_color' ) . ';}';

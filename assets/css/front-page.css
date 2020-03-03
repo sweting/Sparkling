@@ -1,0 +1,109 @@
+/*
+CSS-Sytles for FrontPage
+*/
+
+.top-section {
+    margin-top: 20px;
+}
+
+
+
+.news-container {
+    /*background: #fff; */
+    /*height: 360px;*/
+    /*padding: 7px;*/
+    margin-top: 15px;
+}
+
+@media (min-width: 922px) {
+    .news-container {
+        height: 360px;
+        margin-top: 0;
+    }
+}
+
+.news-container h2 {
+    background: #fff;
+    padding: 5px;
+    margin-top: 0;
+}
+
+.newsRow {
+    background: #fff;
+    /*padding-top: 5px; 
+    padding-bottom: 5px;*/
+    margin: 15px 0 15px 0;
+    cursor: pointer;
+    display: flex;
+}
+
+.newsImage {
+    /*display: table-cell; */
+    background-size: cover;
+    flex: 0 0 93px;
+    height: 93px;
+}
+
+.newsImage img {
+    max-height: 93px;
+}
+
+.newsTitle {
+    vertical-align: middle; 
+    padding: 5px 15px 5px 10px;
+    flex: 2;
+    font-size: 13pt;
+}
+
+/* Action Panels below the slider */
+.action-panel {
+    background-color: #fff;
+    min-height: 150px;
+    background-size: cover;
+    position: relative;
+}
+
+.action-panel-content {
+    background: rgba(38, 38, 38, 0.7);
+    padding: 5px;
+    color: #fff;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    font-size: 14pt;
+    text-align: center;
+}
+
+/* Content elements on StartPage */
+.sp-container-default {
+    /*min-height: 450px;*/
+    margin-top: 20px;
+    display: inline-block;
+    position: relative;
+    /*background-size: cover;*/
+}
+
+.sp-container-default>img {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.sp-container-heading {
+    background: rgba(38, 38, 38, 0.9);
+    padding: 5px;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.sp-container-heading h2 {
+    padding-top: 0;
+    margin-top: 0;
+    color: #fff;
+    font-weight: normal;
+}

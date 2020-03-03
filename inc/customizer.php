@@ -81,6 +81,7 @@ function sparkling_customizer( $wp_customize ) {
 	);
 
 	/* Sparkling Main Options */
+
 	$wp_customize->add_section(
 		'sparkling_slider_options', array(
 			'title'    => __( 'Slider Options', 'sparkling' ),
@@ -141,6 +142,7 @@ function sparkling_customizer( $wp_customize ) {
 		)
 	);
 
+
 	// Pull all the categories into an array
 	global $options_categories;
 	$wp_customize->add_setting(
@@ -184,6 +186,76 @@ function sparkling_customizer( $wp_customize ) {
 			'panel'    => 'sparkling_main_options',
 		)
 	);
+
+
+	/* Sweting - Little panels Settings */
+	$wp_customize->add_section(
+			'sweting_little_panels', array(
+			'title'    => esc_html__( 'Panels', 'sparkling' ),
+			'priority' => 50,
+			'panel'    => 'sparkling_main_options',
+		)
+	);
+
+	
+	for ($panelIndex = 1; $panelIndex < 5; $panelIndex++) {
+		$wp_customize->add_setting(
+			'sparkling[sparkling_little_panel'.$panelIndex.'_title]', array(
+				'default'           => 'Little Panel '.$panelIndex,
+				'type'              => 'option',
+				'sanitize_callback' => 'sparkling_sanitize_strip_slashes',
+			)
+		);
+
+		$wp_customize->add_control(
+			'sparkling[sparkling_little_panel'.$panelIndex.'_title]', array(
+				'label'       => __( 'Titel of Panel '.$panelIndex, 'sparkling' ),
+				'section'     => 'sweting_little_panels',
+				'description' => __( 'Enter the title of Panel '.$panelIndex, 'sparkling' ),
+				'type'        => 'text',
+			)
+		);
+
+		$wp_customize->add_setting(
+			'sparkling[sparkling_little_panel'.$panelIndex.'_link]', array(
+				'default'           => 0,
+				'type'              => 'option',
+				'sanitize_callback' => 'themeslug_sanitize_dropdown_pages',
+			)
+		);
+
+		$wp_customize->add_control(
+			'sparkling[sparkling_little_panel'.$panelIndex.'_link]', array(
+				'label'       => __( 'Link', 'sparkling' ),
+				'section'     => 'sweting_little_panels',
+				'description' => __( 'Select Page', 'sparkling' ),
+				'type'        => 'dropdown-pages',
+			)
+		);
+
+		$wp_customize->add_setting(
+			'sparkling[sparkling_little_panel'.$panelIndex.'_image]', array(
+				'default'           => '',
+				'type'              => 'option',
+				'sanitize_callback' => 'sparkling_sanitize_strip_slashes',
+			)
+		);
+
+		$wp_customize->add_control(
+			new WP_Customize_Media_Control(
+				$wp_customize,
+				'sparkling[sparkling_little_panel'.$panelIndex.'_image]',
+				array(
+					'mime_type' 	=> 'image',
+					'label' 		=> __( 'Image of Panel '.$panelIndex, 'sparkling' ),
+					'section'		=> 'sweting_little_panels',
+					'description' 	=> __( 'Select an image (270x150 Pixel)', 'sparkling' ),
+				)
+			)
+		);
+	}
+
+
 	// Layout options
 	global $site_layout;
 	$wp_customize->add_setting(
@@ -943,6 +1015,17 @@ function sparkling_customizer( $wp_customize ) {
 			'type'        => 'text',
 		)
 	);
+
+
+	/* Kacheln auf der Startseite */
+	$wp_customize->add_section(
+			'sparkling_archive_section', array(
+			'title'    => esc_html__( 'Archive Pages', 'sparkling' ),
+			'priority' => 50,
+			'panel'    => 'sparkling_main_options',
+		)
+	);
+
 }
 
 add_action( 'customize_register', 'sparkling_customizer' );
@@ -1069,6 +1152,14 @@ function sparkling_sanitize_typo_style( $input ) {
 	} else {
 		return $typography_defaults['style'];
 	}
+}
+
+function themeslug_sanitize_dropdown_pages( $page_id, $setting ) {
+	// Ensure $input is an absolute integer.
+	$page_id = absint( $page_id );
+  
+	// If $page_id is an ID of a published page, return it; otherwise, return the default.
+	return ( 'publish' == get_post_status( $page_id ) ? $page_id : $setting->default );
 }
 
 /**

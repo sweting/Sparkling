@@ -7,7 +7,10 @@
 
 get_header();
 ?>
-
+	<div class="container main-content-area">
+			<?php $layout_class = get_layout_class(); ?>
+			<div class="row <?php echo $layout_class; ?>">
+				<div class="main-content-inner <?php echo sparkling_main_content_bootstrap_classes(); ?>">
 			<?php
 			while ( have_posts() ) :
 				the_post();

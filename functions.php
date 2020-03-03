@@ -305,6 +305,9 @@ function sparkling_scripts() {
 	// Add Font Awesome stylesheet
 	wp_enqueue_style( 'sparkling-icons', get_template_directory_uri() . '/assets/css/fontawesome-all.min.css', null, '5.1.1.', 'all' );
 
+	// Add Font Material Icons stylsheet
+	wp_enqueue_style( 'material-icons', get_template_directory_uri() . '/assets/css/material-icons.css', null, '5.1.1.', 'all' );
+
 	// Add Google Fonts
 	$font = of_get_option( 'main_body_typography' );
 	if ( isset( $font['subset'] ) ) {
@@ -646,3 +649,52 @@ function get_the_content_limit($limit){
 	$content = str_replace(']]>', ']]&gt;', $content);
 	return $content;
 }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// Custom post type allgemein
+//////////////////////////////////////////////////////////////////////////////////////////////
+function add_custom_post_type_allgemein() {
+	$labels = array(
+	'name' => 'Allgemein Beiträge',
+	'singular_name' => 'Allgemein',
+	'menu_name' => 'Allgemein',
+	'parent_item_colon' => '',
+	'all_items' => 'Alle Einträge',
+	'view_item' => 'Eintrag ansehen',
+	'add_new_item' => 'Neuer Eintrag',
+	'add_new' => 'Hinzufügen',
+	'edit_item' => 'Eintrag bearbeiten',
+	'update_item' => 'Update Eintrag',
+	'search_items' => '',
+	'not_found' => '',
+	'not_found_in_trash' => '',
+	);
+	$rewrite = array(
+	'slug' => 'allgemein',
+	'with_front' => true,
+	'pages' => true,
+	'feeds' => true,
+	);
+	$args = array(
+	'labels' => $labels,
+	'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'trackbacks', ),
+	'taxonomies' => array( 'post_tag' ),
+	'hierarchical' => false,
+	'public' => true,
+	'show_ui' => true,
+	'show_in_menu' => true,
+	'show_in_nav_menus' => true,
+	'show_in_admin_bar' => true,
+	'menu_position' => 5,
+	'can_export' => false,
+	'has_archive' => true,
+	'exclude_from_search' => false,
+	'publicly_queryable' => true,
+	'rewrite' => $rewrite,
+	'capability_type' => 'page',
+	);
+	register_post_type( 'allgemein', $args );
+	}
+	// Hook into the 'init' action
+	add_action( 'init', 'add_custom_post_type_allgemein', 0 );

@@ -328,7 +328,7 @@ textarea {
 }
 
 .main-content-area {
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 40px;
 }
 
@@ -1325,6 +1325,20 @@ button:hover, .button:hover {
 .nav-links {
     text-align: center;
 }
+
+
+.sparkling-dropdown {
+    display: inline-flex;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+@media (max-width: 767px) {
+.sparkling-dropdown i {
+    font-size: 40px;
+}
+}
+
 
 /* =Comments
 ----------------------------------------------- */
@@ -2447,6 +2461,7 @@ p.logged-in-as {
     color: #fff;
 }
 
+
 @media (max-width: 767px) {
     .cfa {
         padding: 0 0 20px;
@@ -2461,6 +2476,14 @@ p.logged-in-as {
         padding: 0;
     }
 }
+
+@media (max-width: 922px  ) {
+    .tablet-no-padding {
+        padding: 0;
+    }
+}
+
+
 
 /* =Elements when no javaScript is present
 ----------------------------------------------- */

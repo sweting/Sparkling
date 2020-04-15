@@ -52,8 +52,7 @@ get_header(); ?>
 							
 						endwhile;
 					endif;
-					//wp_reset_postdata();
-					wp_reset_query()
+					wp_reset_postdata();
 				?>
 				</div>
 			</div>
@@ -68,15 +67,14 @@ get_header(); ?>
 				<?php 
 					for ($panelIndex = 1; $panelIndex < 5; $panelIndex++) :
 				?>
-				<div class="col-action-panel col-sm-6 col-md-3 col-12">
+				<div class="col-sm-3 mobile-no-padding tablet-no-padding">
 					<a href="<?php echo get_permalink(of_get_option( 'sparkling_little_panel'.$panelIndex.'_link', '' )); ?>">
 					<?php 
 					$imgUrl = get_template_directory_uri() . '/demo/demo_wichtel.jpg';
 						if(of_get_option('sparkling_little_panel'.$panelIndex.'_image') != 0)
 							$imgUrl = wp_get_attachment_image_src(of_get_option('sparkling_little_panel'.$panelIndex.'_image'), 'full')[0];
 					?>
-					<div class="action-panel">
-						<img src="<?php echo $imgUrl;?>">
+					<div class="action-panel" style="background-image: url('<?php echo $imgUrl;?>')">
 						<div class="action-panel-content">
 							<?php echo of_get_option('sparkling_little_panel'.$panelIndex.'_title');?>
 						</div>
@@ -97,6 +95,15 @@ get_header(); ?>
 			<div class="no-sidebar">
 				<div class="main-content-inner">
 	<div class="start-page-content">
+		<style>
+			.sp-container-heading h2{
+				cursor: pointer;
+			}
+
+			.sp-container-heading .allgemein-excerpt {
+				display: none;
+			}
+		</style>
 		<?php
 		$query = new WP_Query(
 			array(
@@ -110,48 +117,34 @@ get_header(); ?>
 			),
 			)
 		);
-		$count = 0;	// Zähler, um abwechselnd links und rechts darzustellen
+
 		while ( $query->have_posts() ) :
-			$count++;	
 			$query->the_post();
 		
 			//$feat_image_url = get_template_directory_uri().'/assets/logo.jpg';
 			$feat_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), array('1170','350') )[0];
 			
-			// Den Inhalt immer abwechseln links und rechts mit 
-			// Bild darstellen
 		?>
-		<div class="sp-container-row row">
-			<div class="col col-12">
-				<img src="<?php echo $feat_image_url;?>">
+		
+		<div class="sp-container-default" >
+			<img src="<?php echo $feat_image_url;?>">
+			<div class="sp-container-heading">
+				<h2 class="allgemein-heading"><?php echo get_the_title(); ?></h2>
+				<div class="allgemein-excerpt">
+				<?php echo get_the_excerpt(); ?>
+				</div>
 			</div>
-			<? if ($count % 2) : ?>
-				<div class="col col-md-6 align-self-center">
-					<h3><?php echo get_the_title(); ?></h3>
-					<div>
-						<?php echo get_the_excerpt(); ?>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<img src="<?php echo $feat_image_url;?>">
-				</div>
-			<?php else : ?>
-				<div class="col-md-6">
-					<img src="<?php echo $feat_image_url;?>">
-				</div>
-				<div class="col col-md-6 align-self-center">
-					<h3><?php echo get_the_title(); ?></h3>
-					<div>
-						<?php echo get_the_excerpt(); ?>
-					</div>
-				</div>
-			<? endif; ?>
 		</div>
+
 		
 		<?php
 		endwhile;
-		wp_reset_query();
 		?>
+		<script>
+			jQuery(".allgemein-heading").click(function () {
+				jQuery(this).parent().children(".allgemein-excerpt").slideToggle();
+			});
+		</script>
 	</div>
 
 <?php
@@ -160,7 +153,8 @@ get_header(); ?>
 	//Standard content - no special post 
 	/////////////////////////////////////////////////////////
 		?>
-		<div class="container main-content-area">
+
+	<div class="container main-content-area">
 			<?php $layout_class = get_layout_class(); ?>
 			<div class="row <?php echo $layout_class; ?>">
 				<div class="main-content-inner <?php echo sparkling_main_content_bootstrap_classes(); ?>">
@@ -169,10 +163,9 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 		<?php
-		wp_reset_query();
 		if ( have_posts() ) :
 
-			if ( is_home() || is_front_page() ) :
+			if ( is_home() && ! is_front_page() ) :
 			?>
 				<header>
 					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
@@ -190,8 +183,7 @@ get_header(); ?>
 				 * If you want to override this in a child theme, then include a file
 				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 				 */
-				get_template_part( 'template-parts/content', 'page' );
-				//get_template_part( 'template-parts/content', get_post_format() );
+				get_template_part( 'template-parts/content', get_post_format() );
 
 			endwhile;
 
@@ -213,10 +205,12 @@ get_header(); ?>
 		endif;
 		?>
 
-	</main>
-	</div>
-<?php
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+	<?php
 	get_sidebar();
 	endif;
+
 //get_sidebar();
 get_footer();

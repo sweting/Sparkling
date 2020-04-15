@@ -697,4 +697,5 @@ function add_custom_post_type_allgemein() {
 	register_post_type( 'allgemein', $args );
 	}
 	// Hook into the 'init' action
-	add_action( 'init', 'add_custom_post_type_allgemein', 0 );
+	if (of_get_option( 'sparkling_front_page_content_checkbox' ) == 1)
+		add_action( 'init', 'add_custom_post_type_allgemein', 0 );

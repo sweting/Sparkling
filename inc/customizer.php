@@ -197,64 +197,202 @@ function sparkling_customizer( $wp_customize ) {
 		)
 	);
 
-	
-	for ($panelIndex = 1; $panelIndex < 5; $panelIndex++) {
-		$wp_customize->add_setting(
-			'sparkling[sparkling_little_panel'.$panelIndex.'_title]', array(
-				'default'           => 'Little Panel '.$panelIndex,
-				'type'              => 'option',
-				'sanitize_callback' => 'sparkling_sanitize_strip_slashes',
+	$wp_customize->add_setting(
+		'sparkling[sparkling_little_panel_checkbox]', array(
+			'default'           => 0,
+			'type'              => 'option',
+			'sanitize_callback' => 'sparkling_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		new Epsilon_Control_Toggle(
+			$wp_customize, 'sparkling[sparkling_little_panel_checkbox]', array(
+				'label'    => esc_html__( 'Check if you want to enable little Panels (reload Page after enable)', 'sparkling' ),
+				'section'  => 'sweting_little_panels',
+				'priority' => 5,
+				'type'     => 'epsilon-toggle',
 			)
-		);
+		)
+	);
 
-		$wp_customize->add_control(
-			'sparkling[sparkling_little_panel'.$panelIndex.'_title]', array(
-				'label'       => __( 'Titel of Panel '.$panelIndex, 'sparkling' ),
-				'section'     => 'sweting_little_panels',
-				'description' => __( 'Enter the title of Panel '.$panelIndex, 'sparkling' ),
-				'type'        => 'text',
-			)
-		);
-
-		$wp_customize->add_setting(
-			'sparkling[sparkling_little_panel'.$panelIndex.'_link]', array(
-				'default'           => 0,
-				'type'              => 'option',
-				'sanitize_callback' => 'themeslug_sanitize_dropdown_pages',
-			)
-		);
-
-		$wp_customize->add_control(
-			'sparkling[sparkling_little_panel'.$panelIndex.'_link]', array(
-				'label'       => __( 'Link', 'sparkling' ),
-				'section'     => 'sweting_little_panels',
-				'description' => __( 'Select Page', 'sparkling' ),
-				'type'        => 'dropdown-pages',
-			)
-		);
-
-		$wp_customize->add_setting(
-			'sparkling[sparkling_little_panel'.$panelIndex.'_image]', array(
-				'default'           => '',
-				'type'              => 'option',
-				'sanitize_callback' => 'sparkling_sanitize_strip_slashes',
-			)
-		);
-
-		$wp_customize->add_control(
-			new WP_Customize_Media_Control(
-				$wp_customize,
-				'sparkling[sparkling_little_panel'.$panelIndex.'_image]',
-				array(
-					'mime_type' 	=> 'image',
-					'label' 		=> __( 'Image of Panel '.$panelIndex, 'sparkling' ),
-					'section'		=> 'sweting_little_panels',
-					'description' 	=> __( 'Select an image (270x150 Pixel)', 'sparkling' ),
+	if(of_get_option( 'sparkling_little_panel_checkbox' ) == 1 ) {
+		for ($panelIndex = 1; $panelIndex < 5; $panelIndex++) {
+			$wp_customize->add_setting(
+				'sparkling[sparkling_little_panel'.$panelIndex.'_title]', array(
+					'default'           => 'Little Panel '.$panelIndex,
+					'type'              => 'option',
+					'sanitize_callback' => 'sparkling_sanitize_strip_slashes',
 				)
-			)
-		);
+			);
+
+			$wp_customize->add_control(
+				'sparkling[sparkling_little_panel'.$panelIndex.'_title]', array(
+					'label'       => __( 'Titel of Panel '.$panelIndex, 'sparkling' ),
+					'section'     => 'sweting_little_panels',
+					'description' => __( 'Enter the title of Panel '.$panelIndex, 'sparkling' ),
+					'type'        => 'text',
+				)
+			);
+
+			$wp_customize->add_setting(
+				'sparkling[sparkling_little_panel'.$panelIndex.'_link]', array(
+					'default'           => 0,
+					'type'              => 'option',
+					'sanitize_callback' => 'themeslug_sanitize_dropdown_pages',
+				)
+			);
+
+			$wp_customize->add_control(
+				'sparkling[sparkling_little_panel'.$panelIndex.'_link]', array(
+					'label'       => __( 'Link', 'sparkling' ),
+					'section'     => 'sweting_little_panels',
+					'description' => __( 'Select Page', 'sparkling' ),
+					'type'        => 'dropdown-pages',
+				)
+			);
+
+			$wp_customize->add_setting(
+				'sparkling[sparkling_little_panel'.$panelIndex.'_image]', array(
+					'default'           => '',
+					'type'              => 'option',
+					'sanitize_callback' => 'sparkling_sanitize_strip_slashes',
+				)
+			);
+
+			$wp_customize->add_control(
+				new WP_Customize_Media_Control(
+					$wp_customize,
+					'sparkling[sparkling_little_panel'.$panelIndex.'_image]',
+					array(
+						'mime_type' 	=> 'image',
+						'label' 		=> __( 'Image of Panel '.$panelIndex, 'sparkling' ),
+						'section'		=> 'sweting_little_panels',
+						'description' 	=> __( 'Select an image (270x150 Pixel)', 'sparkling' ),
+					)
+				)
+			);
+		}
 	}
 
+	/* Sweting - Front Page Settings */
+	$wp_customize->add_section(
+			'sweting_front_page_options', array(
+			'title'    => esc_html__( 'Front Page', 'sparkling' ),
+			'priority' => 50,
+			'panel'    => 'sparkling_main_options',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'sparkling[sparkling_front_page_content_checkbox]', array(
+			'default'           => 0,
+			'type'              => 'option',
+			'sanitize_callback' => 'sparkling_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		new Epsilon_Control_Toggle(
+			$wp_customize, 'sparkling[sparkling_front_page_content_checkbox]', array(
+				'label'    => esc_html__( 'Check if you want to enable special front page content', 'sparkling' ),
+				'section'  => 'sweting_front_page_options',
+				'priority' => 5,
+				'type'     => 'epsilon-toggle',
+			)
+		)
+	);
+
+	/* Sweting - Header image Settings 
+		presents a banner below the header menu in full content width
+	*/
+	$wp_customize->add_section(
+			'sweting_header_options', array(
+			'title'    => esc_html__( 'Header options', 'sparkling' ),
+			'priority' => 50,
+			'panel'    => 'sparkling_main_options',
+		)
+	);
+
+
+
+	$wp_customize->add_setting(
+		'sparkling[sticky_header]', array(
+			'default'           => 0,
+			'type'              => 'option',
+			'sanitize_callback' => 'sparkling_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		new Epsilon_Control_Toggle(
+			$wp_customize, 'sparkling[sticky_header]', array(
+				'label'       => __( 'Sticky Header', 'sparkling' ),
+				'description' => sprintf( __( 'Check to show fixed header', 'sparkling' ) ),
+				'section'     => 'sweting_header_options',
+				'type'        => 'epsilon-toggle',
+			)
+		)
+	);
+
+
+	$wp_customize->add_setting(
+		'sparkling[sweting_logo_title_setting]', array(
+			'default'           => 'default',
+			'type'              => 'option',
+			//'sanitize_callback' => 'sparkling_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'sparkling[sweting_logo_title_setting]', array(
+			'label'       => __( 'Logo/Menu Style', 'sparkling' ),
+			'section'     => 'sweting_header_options',
+			'description' => __( 'Select Style for Displaying logo and main menu', 'sparkling' ),
+			'type'        => 'select',
+			'choices' => array(
+				'default' => 'Default',
+				'right_and_title' => 'Logo right and title left',
+				'right_and_title_menMobile' => 'Logo right and title left. Menu only Mobile'
+			)
+		)
+	);
+
+
+	$wp_customize->add_setting(
+		'sparkling[sparkling_header_image_checkbox]', array(
+			'default'           => 0,
+			'type'              => 'option',
+			'sanitize_callback' => 'sparkling_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		new Epsilon_Control_Toggle(
+			$wp_customize, 'sparkling[sparkling_header_image_checkbox]', array(
+				'label'    => esc_html__( 'Check if you want to enable enable image below main menu in full width', 'sparkling' ),
+				'section'  => 'sweting_header_options',
+				'type'     => 'epsilon-toggle',
+			)
+		)
+	);
+
+	$wp_customize->add_setting(
+		'sparkling[sparkling_header_image]', array(
+			'default'           => '',
+			'type'              => 'option',
+			'sanitize_callback' => 'sparkling_sanitize_strip_slashes',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Cropped_Image_Control(
+			$wp_customize,
+			'sparkling[sparkling_header_image]',
+			array(
+				'label' 		=> __( 'Image below the header menu in full width.', 'sparkling' ),
+				'section'		=> 'sweting_header_options',
+				'description' 	=> __( 'Select an image (1170x300 Pixel)', 'sparkling' ),
+				'width'			=> 1170,
+				'height'		=> 300
+			)
+		)
+	);
 
 	// Layout options
 	global $site_layout;
@@ -595,29 +733,13 @@ function sparkling_customizer( $wp_customize ) {
 	/* Sparkling Header Options */
 	$wp_customize->add_section(
 		'sparkling_header_options', array(
-			'title'    => __( 'Header', 'sparkling' ),
+			'title'    => __( 'Header color', 'sparkling' ),
 			'priority' => 31,
 			'panel'    => 'sparkling_main_options',
 		)
 	);
 
-	$wp_customize->add_setting(
-		'sparkling[sticky_header]', array(
-			'default'           => 0,
-			'type'              => 'option',
-			'sanitize_callback' => 'sparkling_sanitize_checkbox',
-		)
-	);
-	$wp_customize->add_control(
-		new Epsilon_Control_Toggle(
-			$wp_customize, 'sparkling[sticky_header]', array(
-				'label'       => __( 'Sticky Header', 'sparkling' ),
-				'description' => sprintf( __( 'Check to show fixed header', 'sparkling' ) ),
-				'section'     => 'sparkling_header_options',
-				'type'        => 'epsilon-toggle',
-			)
-		)
-	);
+	
 
 	$wp_customize->add_setting(
 		'sparkling[nav_bg_color]', array(

@@ -63,6 +63,23 @@ CSS-Sytles for FrontPage
     position: relative;
 }
 
+.action-panel>img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.col-action-panel {
+    padding: 5px;
+}
+
+@media (min-width: 771px) {
+    .action-panel>img {
+        max-height: 150px;
+    }
+}
+
 .action-panel-content {
     background: rgba(38, 38, 38, 0.7);
     padding: 5px;
@@ -75,6 +92,9 @@ CSS-Sytles for FrontPage
 }
 
 /* Content elements on StartPage */
+.sp-container-row {
+    margin-bottom: 25px;
+}
 .sp-container-default {
     /*min-height: 450px;*/
     margin-top: 20px;

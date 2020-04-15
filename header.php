@@ -54,7 +54,7 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 								<span class="icon-bar"></span>
 							</button>
 
-														<div id="logo" style="width: 80%;">
+														<div style=""<?//id="logo" style="width: 80%;" ?>>
 															<?php if ( get_header_image() != '' ) { ?>
 																	<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php header_image(); ?>"  height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="<?php bloginfo( 'name' ); ?>"/></a>
 																		<?php if ( is_home() ) { ?>
@@ -74,8 +74,13 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 				</div>
 			</div>
 		</nav><!-- .site-navigation -->
+		<?php if(of_get_option( 'sparkling_header_image_checkbox' ) == 1) : ?>
+		<div >
+			<img src="<?php echo wp_get_attachment_image_src(of_get_option('sparkling_header_image'), 'full')[0];?>">
+		</div>
+		<?php endif; ?>
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
-
+			<?php echo of_get_option( 'sweting_logo_title_setting' );?>
 		

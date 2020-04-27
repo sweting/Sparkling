@@ -142,6 +142,7 @@ get_header(); ?>
 		?>
 		<script>
 			jQuery(".allgemein-heading").click(function () {
+				jQuery(".allgemein-excerpt").hide();
 				jQuery(this).parent().children(".allgemein-excerpt").slideToggle();
 			});
 		</script>

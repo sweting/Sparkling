@@ -36,7 +36,7 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 <div id="page" class="hfeed site">
 
-	<header id="masthead" class="site-header container" role="banner">
+	<header id="masthead" class="site-header " role="banner">
 		<nav class="navbar navbar-default 
 		<?php
 		if ( of_get_option( 'sticky_header' ) ) {
@@ -54,10 +54,11 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 								<span class="icon-bar"></span>
 							</button>
 
-														<div style=""<?//id="logo" style="width: 80%;" ?>>
+														<div id="logo" <?php//style="width: 80%;" ?>>
 															<?php if ( get_header_image() != '' ) { ?>
-																	<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php header_image(); ?>"  height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="<?php bloginfo( 'name' ); ?>"/></a>
-																		<?php if ( is_home() ) { ?>
+																	<?php /* height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>"*/?>
+																	<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php header_image(); ?>"   alt="<?php bloginfo( 'name' ); ?>"/></a>
+																		<?php  if ( is_home() ) { ?>
 																		<h1 class="site-name hide-site-name"><a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 																	<?php
 }
@@ -80,7 +81,7 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 		</div>
 		<?php endif; ?>
 	</header><!-- #masthead -->
-
+	<div class="under-header"></div>
 	<div id="content" class="site-content">
 			<?php echo of_get_option( 'sweting_logo_title_setting' );?>
 		

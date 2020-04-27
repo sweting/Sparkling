@@ -216,7 +216,7 @@ function sparkling_customizer( $wp_customize ) {
 	);
 
 	if(of_get_option( 'sparkling_little_panel_checkbox' ) == 1 ) {
-		for ($panelIndex = 1; $panelIndex < 5; $panelIndex++) {
+		for ($panelIndex = 1; $panelIndex < 4; $panelIndex++) {
 			$wp_customize->add_setting(
 				'sparkling[sparkling_little_panel'.$panelIndex.'_title]', array(
 					'default'           => 'Little Panel '.$panelIndex,

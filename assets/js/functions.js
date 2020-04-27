@@ -31,7 +31,7 @@ function SparklingIsMobile () {
 
 function generateMobileMenu () {
   var menu = jQuery('#masthead .site-navigation-inner .navbar-collapse > ul.nav')
-  if (SparklingIsMobile() && jQuery(window).width() > 767) {
+  if (SparklingIsMobile() && jQuery(window).width() > 769) {
     menu.addClass('sparkling-mobile-menu')
   } else {
     menu.removeClass('sparkling-mobile-menu')

@@ -17,10 +17,10 @@ get_header(); ?>
 		if ( is_front_page() && of_get_option( 'sparkling_slider_checkbox' ) == 1 ) :
 		?>
 		<div class="row">
-			<div class="col-md-8 mobile-no-padding tablet-no-padding">
+			<div class="col-md-8 ">
 				<?php sparkling_featured_slider(); ?>
 			</div>
-			<div class="col-md-4 mobile-no-padding tablet-no-padding">
+			<div class="col-md-4 ">
 				<div class="news-container">
 				<h2>Aktuelles</h2>
 				<?php
@@ -66,9 +66,9 @@ get_header(); ?>
 		<div class="container" style="margin-top: 20px;">
 			<div class="row">
 				<?php 
-					for ($panelIndex = 1; $panelIndex < 5; $panelIndex++) :
+					for ($panelIndex = 1; $panelIndex < 4; $panelIndex++) :
 				?>
-				<div class="col-action-panel col-sm-6 col-md-3 col-12">
+				<div class="col-action-panel col-sm-6 col-md-4 col-12">
 					<a href="<?php echo get_permalink(of_get_option( 'sparkling_little_panel'.$panelIndex.'_link', '' )); ?>">
 					<?php 
 					$imgUrl = get_template_directory_uri() . '/demo/demo_wichtel.jpg';
@@ -88,8 +88,19 @@ get_header(); ?>
 				?>
 			</div>
 		</div>
-		<?php 
+		<?php  
 		endif; 
+		?>
+		<div class="container" style="margin-top: 10px;">
+		<a href="/informationen/eine-gruppe-finden/">
+			<div class="col-12" style="background: rgba(38, 38, 38, 0.7); width: 100%; text-align: center; padding: 10px;">
+					<h2 style="color: #fff">
+					Jetzt mitmachen und eine Gruppe finden
+					</h2>
+			</div>
+			</a>
+		</div>
+		<?php
 		if (of_get_option('sparkling_front_page_content_checkbox') == 1 ) :
 		?> 
 
@@ -101,7 +112,7 @@ get_header(); ?>
 		$query = new WP_Query(
 			array(
 				'post_type'		 => 'allgemein',
-				'posts_per_page' => 3,
+				'posts_per_page' => 10,
 				'meta_query'     => array(
 					array(
 						'key'     => '_thumbnail_id',
@@ -121,39 +132,33 @@ get_header(); ?>
 			// Den Inhalt immer abwechseln links und rechts mit 
 			// Bild darstellen
 		?>
-		<div class="sp-container-row row">
-			<div class="col col-12">
+		<div >
+			<div class="sp-container-default">
+				<div class="sp-container-heading">
+					<h2><?php echo get_the_title(); ?></h2>
+				</div>
 				<img src="<?php echo $feat_image_url;?>">
 			</div>
-			<? if ($count % 2) : ?>
-				<div class="col col-md-6 align-self-center">
-					<h3><?php echo get_the_title(); ?></h3>
-					<div>
-						<?php echo get_the_excerpt(); ?>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<img src="<?php echo $feat_image_url;?>">
-				</div>
-			<?php else : ?>
-				<div class="col-md-6">
-					<img src="<?php echo $feat_image_url;?>">
-				</div>
-				<div class="col col-md-6 align-self-center">
-					<h3><?php echo get_the_title(); ?></h3>
-					<div>
-						<?php echo get_the_excerpt(); ?>
-					</div>
-				</div>
-			<? endif; ?>
+			<div class="col col-12 allgemein-excerpt">
+				<?php the_content(); ?>
+			</div>
 		</div>
-		
 		<?php
 		endwhile;
 		wp_reset_query();
 		?>
+		<script>
+			jQuery(".sp-container-default").click(function () {
+				if(jQuery(this).parent().children(".allgemein-excerpt").is(":visible")) {
+					jQuery(this).parent().children(".allgemein-excerpt").slideUp();
+				} else {
+					jQuery(".allgemein-excerpt").slideUp();
+					jQuery(this).parent().children(".allgemein-excerpt").slideToggle();
+				}
+			});
+		</script>
 	</div>
-
+		</div>
 <?php
 	else:	
 	/////////////////////////////////////////////////////////

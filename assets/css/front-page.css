@@ -9,9 +9,9 @@ CSS-Sytles for FrontPage
 
 
 .news-container {
-    /*background: #fff; */
+    background: #730117; 
     /*height: 360px;*/
-    /*padding: 7px;*/
+    padding: 5px;
     margin-top: 15px;
 }
 
@@ -23,24 +23,25 @@ CSS-Sytles for FrontPage
 }
 
 .news-container h2 {
-    background: #fff;
-    padding: 5px;
+    color: #fff;
+    /*padding: 5px;*/
     margin-top: 0;
 }
 
 .newsRow {
-    background: #fff;
+    background: rgb(38,38,38);
     /*padding-top: 5px; 
     padding-bottom: 5px;*/
-    margin: 15px 0 15px 0;
+    margin: 10px 0 10px 0;
     cursor: pointer;
     display: flex;
+    align-items: center;
 }
 
 .newsImage {
     /*display: table-cell; */
     background-size: cover;
-    flex: 0 0 93px;
+    flex: 0 0 140px;
     height: 93px;
 }
 
@@ -54,6 +55,16 @@ CSS-Sytles for FrontPage
     flex: 2;
     font-size: 13pt;
 }
+
+.newsTitle a {
+    color: #fff;
+}
+
+.newsRow:hover {
+    background: rgba(80,80,80);
+}
+
+
 
 /* Action Panels below the slider */
 .action-panel {
@@ -76,7 +87,7 @@ CSS-Sytles for FrontPage
 
 @media (min-width: 771px) {
     .action-panel>img {
-        max-height: 150px;
+        height: 208px;
     }
 }
 
@@ -91,6 +102,13 @@ CSS-Sytles for FrontPage
     text-align: center;
 }
 
+@media(max-width: 768px) {
+    .start-page-content {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
 /* Content elements on StartPage */
 .sp-container-row {
     margin-bottom: 25px;
@@ -100,7 +118,17 @@ CSS-Sytles for FrontPage
     margin-top: 20px;
     display: inline-block;
     position: relative;
+    cursor: pointer;
+    width: 100%;
     /*background-size: cover;*/
+}
+
+.sp-container-default:hover > .sp-container-heading  {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.sp-container-default:hover >  .sp-container-heading h2 {
+    color: #003399;
 }
 
 .sp-container-default>img {
@@ -111,11 +139,12 @@ CSS-Sytles for FrontPage
 }
 
 .sp-container-heading {
-    background: rgba(38, 38, 38, 0.9);
-    padding: 5px;
+    background: rgba(38, 38, 38, 0.7);
+    text-align: center;
+    padding: 20px;
     color: #fff;
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
     z-index: 100;
@@ -126,4 +155,10 @@ CSS-Sytles for FrontPage
     margin-top: 0;
     color: #fff;
     font-weight: normal;
+}
+
+.allgemein-excerpt {
+    display: none;
+    font-size: large;
+    color: #000;
 }

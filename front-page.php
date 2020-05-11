@@ -9,8 +9,8 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  */
 
-wp_enqueue_style( 'sweting-frontpage', get_template_directory_uri() . '/assets/css/front-page.css' );
-get_header(); ?>
+get_header();
+wp_enqueue_style( 'sweting-frontpage', get_template_directory_uri() . '/assets/css/front-page.css' ); ?>
 
 	<div class="top-section container">
 		<?php
@@ -20,7 +20,7 @@ get_header(); ?>
 			<div class="col-md-8 ">
 				<?php sparkling_featured_slider(); ?>
 			</div>
-			<div class="col-md-4 ">
+			<div class="col-md-4 news-parent-container">
 				<div class="news-container">
 				<h2>Aktuelles</h2>
 				<?php
@@ -30,15 +30,16 @@ get_header(); ?>
 						)
 					);
 					if ( $query->have_posts() ) :
+						$i = 0;
 						while ( $query->have_posts() ) :
 							$query->the_post();
-						
+							$i++;
 							$feat_image_url = get_template_directory_uri().'/assets/logo.jpg';
 							if ( ( function_exists( 'has_post_thumbnail' ) ) && ( has_post_thumbnail() ) ) {
 								$feat_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail' )[0];
 							}
 							?>
-								<div class="newsRow" onclick="location.href= '<?php echo get_permalink();?>';">
+								<div class="newsRow" id="news-<?php echo $i;?>" onclick="location.href= '<?php echo get_permalink();?>';">
 									<div class="newsImage" style="background-image: url('<?php echo $feat_image_url; ?>');">
 										<?php //echo '<a href="'.get_permalink().'"><img src="' . $feat_image_url. '"></a>'; ?>
 									</div>
@@ -91,14 +92,18 @@ get_header(); ?>
 		<?php  
 		endif; 
 		?>
-		<div class="container" style="margin-top: 10px;">
-		<a href="/informationen/eine-gruppe-finden/">
-			<div class="col-12" style="background: rgba(38, 38, 38, 0.7); width: 100%; text-align: center; padding: 10px;">
-					<h2 style="color: #fff">
+		<div class="container mobile-space" style="margin-top: 10px;">
+		<div class="row">
+			<div class="col-md-12" style="">
+				<div class="find-group-btn">
+				<a href="/informationen/eine-gruppe-finden/">
+					<h2 >
 					Jetzt mitmachen und eine Gruppe finden
 					</h2>
+				</a>
+				</div>
 			</div>
-			</a>
+		</div>
 		</div>
 		<?php
 		if (of_get_option('sparkling_front_page_content_checkbox') == 1 ) :

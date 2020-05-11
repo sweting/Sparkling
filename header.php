@@ -46,7 +46,7 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 			<div class="container">
 				<div class="row">
 					<div class="site-navigation-inner col-sm-12">
-						<div class="navbar-header">
+						<div class="navbar-header" style="margin-bottom: 20px;">
 							<button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 								<span class="sr-only">Toggle navigation</span>
 								<span class="icon-bar"></span>

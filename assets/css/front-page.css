@@ -7,7 +7,6 @@ CSS-Sytles for FrontPage
 }
 
 
-
 .news-container {
     background: #730117; 
     /*height: 360px;*/
@@ -19,6 +18,12 @@ CSS-Sytles for FrontPage
     .news-container {
         height: 360px;
         margin-top: 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .news-container {
+        margin-top: 20px;
     }
 }
 
@@ -64,6 +69,15 @@ CSS-Sytles for FrontPage
     background: rgba(80,80,80);
 }
 
+@media (min-width: 992px) and (max-width: 1200px) {
+    #news-3 {
+        display: none;
+    }
+    .news-container {
+        height: 297px;
+    }
+}
+
 
 
 /* Action Panels below the slider */
@@ -81,15 +95,14 @@ CSS-Sytles for FrontPage
     height: auto;
 }
 
-.col-action-panel {
-    padding: 5px;
-}
 
-@media (min-width: 771px) {
+
+
+/*@media (min-width: 771px) {
     .action-panel>img {
         height: 208px;
     }
-}
+}*/
 
 .action-panel-content {
     background: rgba(38, 38, 38, 0.7);
@@ -102,10 +115,21 @@ CSS-Sytles for FrontPage
     text-align: center;
 }
 
-@media(max-width: 768px) {
+@media(max-width: 992px) {
+    .col-action-panel {
+        padding: 5px 15px;
+    }
+}
+
+@media(max-width: 922px) {
     .start-page-content {
         padding-right: 15px;
         padding-left: 15px;
+    }
+
+    /** Für den Einzelbutton */
+    .mobile-space {
+        margin-bottom: 20px;
     }
 }
 
@@ -115,7 +139,7 @@ CSS-Sytles for FrontPage
 }
 .sp-container-default {
     /*min-height: 450px;*/
-    margin-top: 20px;
+    margin-bottom: 20px;
     display: inline-block;
     position: relative;
     cursor: pointer;
@@ -152,7 +176,7 @@ CSS-Sytles for FrontPage
 
 .sp-container-heading h2 {
     padding-top: 0;
-    margin-top: 0;
+    margin: 0;
     color: #fff;
     font-weight: normal;
 }

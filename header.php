@@ -82,5 +82,5 @@ if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && ( strpos( $_SERVER['HTTP_USER_AGENT
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
-			<?php echo of_get_option( 'sweting_logo_title_setting' );?>
+			<?php //echo of_get_option( 'sweting_logo_title_setting' );?>
 		

@@ -699,3 +699,29 @@ function add_custom_post_type_allgemein() {
 	// Hook into the 'init' action
 	if (of_get_option( 'sparkling_front_page_content_checkbox' ) == 1)
 		add_action( 'init', 'add_custom_post_type_allgemein', 0 );
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+// Block Editor breiter machen
+/////////////////////////////////////////////////////////////////////////////////////////////
+function gb_gutenberg_admin_styles() {
+    echo '
+        <style>
+            /* Main column width */
+            .wp-block {
+                max-width: 1170px;
+            }
+ 
+            /* Width of "wide" blocks */
+            .wp-block[data-align="wide"] {
+                max-width: 1170px;
+            }
+ 
+            /* Width of "full-wide" blocks */
+            .wp-block[data-align="full"] {
+                max-width: 1170px;
+            }	
+        </style>
+    ';
+}
+add_action('admin_head', 'gb_gutenberg_admin_styles');

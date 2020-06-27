@@ -238,10 +238,10 @@ if ( ! function_exists( 'sparkling_featured_slider' ) ) :
 								'resize' => '770,250',
 							);
 							$photon_url     = jetpack_photon_url( $feat_image_url[0], $args );
-							echo '<img src="' . $photon_url . '">';
+							echo '<img class="nolazyload" src="' . $photon_url . '">';
 						} else {
 							$feat_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
-							echo '<img src="' . $feat_image_url[0] . '">';
+							echo '<img class="nolazyload" src="' . $feat_image_url[0] . '">';
 							//echo get_the_post_thumbnail( get_the_ID(), 'activello-slider' );
 						}
 					endif;
